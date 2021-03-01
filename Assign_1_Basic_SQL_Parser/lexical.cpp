@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "ass2.h"
+#include "macros.h"
 
 using namespace std;
 
@@ -9,8 +9,8 @@ extern void parse(void);
 
 vector<pair<int,string> > tokens;
 
-const char *sql_keywords[] = {"add", "all", "alter", "and", "by", "between", "char", "column", "create", "decimal", 
-"delete", "distinct", "double", "drop", "foreign", "from", "in", "insert", "int", "into", "key", "not", "null", "or", 
+const char *sql_keywords[] = {"add", "all", "alter", "and", "by", "between", "char", "column", "create", "decimal",
+"delete", "distinct", "double", "drop", "foreign", "from", "in", "insert", "int", "into", "key", "not", "null", "or",
 "primary", "references", "select", "set", "table", "unique", "update", "values", "varchar", "where", NULL};
 
 map<string,int> dict = {
@@ -185,7 +185,7 @@ void lexical()
 			tok.clear();
 			tok.push_back(ch);
 			tokens.push_back(make_pair(LEFT_BRACKET,tok));
-		}		
+		}
 		else if(ch == right_bracket)
 		{
 			tok.clear();
@@ -204,16 +204,16 @@ void lexical()
 			tok.push_back(ch);
 			tokens.push_back(make_pair(SEMICOLON,tok));
 			query_count++;
-			
+
 			parse();
-			
+
 			tokens.clear();
 		}
 		else if(is_ident(ch))
 		{
 			char *token = (char *)malloc(MAX*sizeof(char));
 			char *token_copy = (char *)malloc(MAX*sizeof(char));
-			int len=0;	
+			int len=0;
 			while(is_ident(ch))
 			{
 				token[len] = tolower(ch);
@@ -223,7 +223,7 @@ void lexical()
 			}
 			ungetc(ch,stdin);
 			token[len] = token_copy[len] = '\0';
-			
+
 			if((tok_cnt=is_keyword(token))!=0)
 			{
 				tok.clear();
@@ -242,7 +242,7 @@ void lexical()
 				tok.assign(token_copy,token_copy+len);
 				tokens.push_back(make_pair(NUMBER,tok));
 			}
-			else 
+			else
 			{
 				error(token_copy,len,&query_count);
 				tokens.clear();
@@ -259,7 +259,7 @@ void lexical()
 				tok.push_back(ch);
 				tok.push_back(ch_new);
 				tokens.push_back(make_pair(OPERATOR,tok));
-			}	
+			}
 			else
 			{
 				ungetc(ch_new,stdin);
@@ -364,9 +364,9 @@ void lexical()
 			int len = 0;
 			ungetc(ch,stdin);
 			error(token,len,&query_count);
-			free(token); 			
+			free(token);
 			tokens.clear();
 		}
 		ch = getc(stdin);
 	}
-}  
+}

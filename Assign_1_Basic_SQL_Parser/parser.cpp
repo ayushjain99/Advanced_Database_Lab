@@ -1,7 +1,7 @@
-//Defining the header files used in ass2.h and including that file 
+//Defining the header files used in macros.h and including that file
 
 #include <bits/stdc++.h>
-#include "ass2.h"
+#include "macros.h"
 
 using namespace std;
 
@@ -12,20 +12,20 @@ using namespace std;
 #define S second		//macro for second half of a pair
 
 
-//external variables to be used across files 
+//external variables to be used across files
 extern void lexical(void);
 extern vector<pair<int,string> > tokens;
 extern vector<string> tree;
 
 //utility structure to print the productions as the parse tree
-struct sent 
+struct sent
 {
 	string name;
 	int sz;
 	struct sent *nxt[20];
 };
 
-//utility functions used as the non-terminals in the productions 
+//utility functions used as the non-terminals in the productions
 bool expression(struct sent *&t);
 bool expressions(struct sent *&t);
 bool where_condition(struct sent *&t);
@@ -41,7 +41,7 @@ bool semicolon(struct sent* &t)
 	t = new sent;
 	if(tokens[ptr].F == SEMICOLON)
 	{
-		/* This part of code for all the nonterminals id to print the productions as the parse tree */	
+		/* This part of code for all the nonterminals id to print the productions as the parse tree */
 
 
 		t->name = "SEMICOLON";
@@ -84,7 +84,7 @@ bool equal_sign(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is EQUAL in place of " + tokens[ptr].S;
-	return 0;	
+	return 0;
 }
 
 bool select(struct sent* &t)
@@ -98,7 +98,7 @@ bool select(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is SELECT in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -146,7 +146,7 @@ bool between(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is BETWEEN in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -161,7 +161,7 @@ bool in(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is IN in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -176,7 +176,7 @@ bool drop(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is DROP in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -191,7 +191,7 @@ bool andx(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is AND in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -206,7 +206,7 @@ bool orx(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is OR in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -221,7 +221,7 @@ bool add(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is ADD in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -236,7 +236,7 @@ bool column(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is COLUMN in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -251,7 +251,7 @@ bool character(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is CHAR in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -266,7 +266,7 @@ bool left_br(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is LEFT_BRACKET in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -281,7 +281,7 @@ bool right_br(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is RIGHT_BRACKET in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -299,7 +299,7 @@ bool number(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is NUMBER in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -314,7 +314,7 @@ bool varchar(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is VARCHAR in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -329,7 +329,7 @@ bool decimal(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is DECIMAL in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -344,7 +344,7 @@ bool integer(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is INT in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -359,8 +359,8 @@ bool into(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is INTO in place of " + tokens[ptr].S;
-	
-	return 0;	
+
+	return 0;
 }
 
 bool no(struct sent* &t)
@@ -374,8 +374,8 @@ bool no(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is NOT in place of " + tokens[ptr].S;
-	
-	return 0;	
+
+	return 0;
 }
 
 bool comma(struct sent* &t)
@@ -389,7 +389,7 @@ bool comma(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is COMMA in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -405,7 +405,7 @@ bool null(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is NULL in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -420,7 +420,7 @@ bool values(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is VALUES in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -435,7 +435,7 @@ bool unique(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is UNIQUE in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -450,7 +450,7 @@ bool all(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is ALL in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -465,7 +465,7 @@ bool distinct(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is DISTINCT in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -480,7 +480,7 @@ bool from(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is FROM in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -495,7 +495,7 @@ bool plus_sign(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is PLUS in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -510,7 +510,7 @@ bool minus_sign(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is MINUS in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -525,7 +525,7 @@ bool star(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is STAR in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -540,7 +540,7 @@ bool slash(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is SLASH in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -556,7 +556,7 @@ bool primary(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is PRIMARY in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -571,7 +571,7 @@ bool where(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is WHERE in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -586,8 +586,8 @@ bool setx(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is SET in place of " + tokens[ptr].S;
-	
-	return 0;	
+
+	return 0;
 }
 
 bool key(struct sent *&t)
@@ -601,7 +601,7 @@ bool key(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is KEY in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -619,8 +619,8 @@ bool strng(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is STRING in place of " + tokens[ptr].S;
-	
-	return 0;	
+
+	return 0;
 }
 
 bool references(struct sent * &t)
@@ -634,7 +634,7 @@ bool references(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is REFERENCES in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -649,7 +649,7 @@ bool doble(struct sent* &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is DOUBLE in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 /*
@@ -687,7 +687,7 @@ bool coln_type(struct sent *&t)
 			return 1;
 		}
 		ptr = save_ptr;
-		return 0;	
+		return 0;
 	}
 	ptr = save_ptr;
 	if(decimal(t0))
@@ -717,7 +717,7 @@ bool coln_type(struct sent *&t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is column_type in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -747,14 +747,14 @@ bool variables(struct sent *&t)
 			ptr = save_ptr;
 			return 0;
 		}
-		ptr = save_ptr;	
+		ptr = save_ptr;
 		t->sz = 1;
 		t->nxt[0] = t0;
 		return 1;
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is IDENTIFIER in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -850,7 +850,7 @@ bool drop_add(struct sent * &t)
 	}
 	ptr = save_ptr;
 	log_msg = "Next expected token is DROP/ADD in place of " + tokens[ptr].S;
-	
+
 	return 0;
 }
 
@@ -899,7 +899,7 @@ bool table_columns(struct sent * &t)
 			ptr = save_ptr;
 			return 0;
 		}
-		ptr = save_ptr;	
+		ptr = save_ptr;
 		t->sz = 1;
 		t->nxt[0] = t0;
 		return 1;
@@ -960,7 +960,7 @@ bool values_list(struct sent *&t)
 		}
 		ptr = save_ptr;
 		t->sz = 1;
-		t->nxt[0] = t0;	
+		t->nxt[0] = t0;
 		return 1;
 	}
 	ptr = save_ptr;
@@ -1170,7 +1170,7 @@ bool variable_expressions(struct sent * &t)
 		}
 		ptr = save_ptr;
 		t->sz = 1;
-		t->nxt[0] = t0;	
+		t->nxt[0] = t0;
 		return 1;
 	}
 	ptr = save_ptr;
@@ -1360,7 +1360,7 @@ bool conditions(struct sent * &t)
 		}
 		ptr = p;
 		log_msg = "Next expected token is OPERATOR in place of " + tokens[ptr].S;
-		return 0;		
+		return 0;
 	}
 	ptr = save_ptr;
 	return 0;
@@ -1512,7 +1512,7 @@ bool key_value_pairs(struct sent * &t)
 		}
 		ptr = save_ptr;
 		t->sz = 1;
-		t->nxt[0] = t0;	
+		t->nxt[0] = t0;
 		return 1;
 	}
 	ptr = save_ptr;
@@ -1562,7 +1562,7 @@ void parse()
 			t->nxt[1] = t1;
 			t->nxt[2] = t2;
 			t->nxt[3] = t3;
-			
+
 			print_tree(t,0);
 			return;
 		}
@@ -1718,11 +1718,11 @@ void parse()
 	}
 }
 
-/* 
+/*
 main function to call the lexical analyser which in turn calls the parser which does the syntax analysis
 */
 int main()
-{	
+{
 	lexical();
 	return 0;
 }
