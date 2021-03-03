@@ -1,0 +1,1 @@
+Select * from Accounts where Dept = 10
