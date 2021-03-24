@@ -1,0 +1,6 @@
+SELECT * from Ayush
+SELECT Account_No, Balance from Accounts
+SELECT age, amount from student join bank on student.id = bank.id
+SELECT a, b from bank join bus on bus.id=bank.id join truck on truck.id = bus.id
+SELECT age, height, loan , max(credit), count(debit) from account join transaction on name = ayush join class on std = Btech group by age order by height
+SELECT * from a, b, c, d
